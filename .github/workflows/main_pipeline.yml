@@ -1,4 +1,4 @@
-name: CI/CD Project Pipeline 
+name: CI/CD Main Project Pipeline 
 
 on:
   workflow_dispatch:
