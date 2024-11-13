@@ -1,4 +1,4 @@
-name: CI/CD Main Project Pipeline 
+name: Main Project Pipeline 
 
 on:
   workflow_dispatch:
@@ -9,17 +9,19 @@ on:
         default: 'false'
         type: boolean
 
+
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
   FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
+
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10, 3.11]
+        python-version: ["3.10", "3.11"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
