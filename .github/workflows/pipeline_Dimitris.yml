@@ -44,20 +44,20 @@ jobs:
         continue-on-error: true
 
       - name: Upload error logs if tests failed and logging is enabled
-        if: ${{ steps.run_tests.outcome == 'failure' && github.event.inputs.log_errors == 'true' }}
+        if: steps.run_tests.outcome == 'failure' && github.event.inputs.log_errors == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: error-log
           path: pytest-results.log
 
       - name: Fail job if tests failed
-        if: ${{ steps.run_tests.outcome == 'failure' }}
+        if: steps.run_tests.outcome == 'failure'
         run: exit 1
 
   build-and-push-to-dockerhub:
     runs-on: ubuntu-latest
     needs: run-tests
-    if: ${{ needs.run-tests.result == 'success' }}
+    if: needs.run-tests.result == 'success'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -81,10 +81,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
-
-  run-container:
-    runs-on: ubuntu-latest
-    needs: build-and-push-to-dockerhub
-    steps:
-      - name: Run Docker Container
-        run: docker run -e FREE_CURRENCY_API_KEY=${{ secrets.FREE_CURRENCY_API_KEY }} -p 5000:5000 dimitris1207/fork_automation_and_devops_project:latest
