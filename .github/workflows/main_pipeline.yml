@@ -62,9 +62,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Debug DOCKERHUB_USERNAME
-        run: echo "Docker username: $DOCKERHUB_USERNAME"
   
 
       - name: Set up Docker Buildx
