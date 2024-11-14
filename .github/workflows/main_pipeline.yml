@@ -96,12 +96,12 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-
+          
       - name: Set Docker Image for Azure Web App
         run: |
           az webapp config container set --name devops-automation \
                                          --resource-group currency-converter-api_group \
-                                         --docker-custom-image-name ${{ env.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest        
+                                         --docker-custom-image-name ${{ env.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
+       
 
 
