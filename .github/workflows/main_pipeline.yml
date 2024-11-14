@@ -75,4 +75,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}//fork_automation_and_devops_project:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}//myfirstrepo:latest
