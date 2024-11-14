@@ -73,8 +73,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-<<<<<<< HEAD
           tags: ${{ env.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
-=======
-          tag: $DOCKERHUB_USERNAME/fork_automation_and_devops_project:latest
->>>>>>> f4287f6608bc0beee2dc2b762ec99b01622b6299
+
+
