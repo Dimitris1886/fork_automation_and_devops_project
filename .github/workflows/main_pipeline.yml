@@ -9,6 +9,12 @@ on:
         default: 'false'
         type: boolean
 
+
+permissions:
+  id-token: write
+  contents: read
+
+
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
