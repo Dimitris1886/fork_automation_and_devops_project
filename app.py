@@ -8,7 +8,7 @@ load_dotenv()
 app = Flask(__name__)
 
 API_URL = 'https://api.freecurrencyapi.com/v1/latest'
-API_KEY = os.getenv('FREE_CURRENCY_API_KEY')
+API_KEY = 'fca_live_Nu1rRLZCitbXaN3mRyX077BqUKzIdqNN8WRrxl5w' #os.getenv('FREE_CURRENCY_API_KEY')
 
 logging.info(f"The API key = {API_KEY}")
 
