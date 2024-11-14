@@ -76,4 +76,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: $DOCKERHUB_USERNAME/fork_automation_and_devops_project:latest
+          tags: dimitris1207/fork_automation_and_devops_project:latest
