@@ -74,10 +74,10 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
+        env:
+          FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
         with:
           context: .
           file: ./Dockerfile
           push: true
-          env:
-          FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
