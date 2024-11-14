@@ -1,7 +1,5 @@
 FROM python:3.10-slim
 
-ENV FREE_CURRENCY_API_KEY=${FREE_CURRENCY_API_KEY}
-
 WORKDIR /app
 
 # Copy requirements.txt into the container as first layer
