@@ -15,10 +15,10 @@ permissions:
   contents: read
 
 
-# env:
-#   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-#   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-#   FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
+env:
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
 
 jobs:
   run-tests:
