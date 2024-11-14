@@ -74,5 +74,30 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
+   
+
+
+
+  deploy-to-azure:
+    runs-on: ubuntu-latest
+    needs: build-and-push-to-dockerhub
+    if: ${{ needs.build-and-push-to-dockerhub.result == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+      - name: Set Docker Image for Azure Web App
+        run: |
+          az webapp config container set --name devops-automation \
+                                         --resource-group currency-converter-api_group \
+                                         --docker-custom-image-name ${{ env.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest        
 
 
