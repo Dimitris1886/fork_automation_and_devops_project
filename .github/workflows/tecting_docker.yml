@@ -1,7 +1,0 @@
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: dimitris1207/fork_automation_and_devops_project:latest
