@@ -1,4 +1,4 @@
-name: Main Project Pipeline 
+name: Project Pipeline 
 
 on:
   workflow_dispatch:
