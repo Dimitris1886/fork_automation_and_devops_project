@@ -83,6 +83,23 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
         env:
           FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'devops-automation'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_489d6d4410c8428d818280f53b8ac26f }}
+          images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b6181770a4c459794495657d70cd378 }}/dimitris1207/fork_automation_and_devops_project:${{ github.sha }}'
    
 
 
@@ -146,20 +163,3 @@ jobs:
 #           push: true
 #           tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b6181770a4c459794495657d70cd378 }}/dimitris1207/fork_automation_and_devops_project:${{ github.sha }}
 #           file: ./Dockerfile
-
-    deploy:
-      runs-on: ubuntu-latest
-      needs: build
-      environment:
-        name: 'Production'
-        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-      steps:
-        - name: Deploy to Azure Web App
-          id: deploy-to-webapp
-          uses: azure/webapps-deploy@v2
-          with:
-            app-name: 'devops-automation'
-            slot-name: 'Production'
-            publish-profile: ${{ secrets.AzureAppService_PublishProfile_489d6d4410c8428d818280f53b8ac26f }}
-            images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b6181770a4c459794495657d70cd378 }}/dimitris1207/fork_automation_and_devops_project:${{ github.sha }}'
