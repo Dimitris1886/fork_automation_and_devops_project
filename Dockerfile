@@ -10,9 +10,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
+# Define the environment variable (this will set it to an empty default)
+ENV FREE_CURRENCY_API_KEY ""
 
 # Expose port 5000 for the Flask app for local testing
 EXPOSE 5000
 
 CMD ["python", "app.py"]
-
