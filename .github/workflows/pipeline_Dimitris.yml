@@ -1,4 +1,4 @@
-name: Main Project Pipeline
+name: Test Main Project Pipeline
 
 on:
   push:
