@@ -82,7 +82,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
-        env:
+        #env:
           #REE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
 
 
