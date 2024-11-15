@@ -10,9 +10,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
-# Add ARG and ENV for FREE_CURRENCY_API_KEY
-ARG API_KEY
-ENV API_KEY=${FREE_CURRENCY_API_KEY}
+ARG FREE_CURRENCY_API_KEY
+ENV FREE_CURRENCY_API_KEY=${FREE_CURRENCY_API_KEY}
+
 
 # Expose port 5000 for the Flask app for local testing
 EXPOSE 5000

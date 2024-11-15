@@ -78,12 +78,11 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          load: true 
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
-        #env:
-          #REE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
+          env:
+            FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
 
 
   deploy:
@@ -91,7 +90,7 @@ jobs:
     needs: build-and-push-to-dockerhub
     if: ${{ needs.build-and-push-to-dockerhub.result == 'success' }}
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -100,7 +99,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'devops-automation'
-          slot-name: 'Production'
+          slot-name: production
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_489d6d4410c8428d818280f53b8ac26f }}
           images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b6181770a4c459794495657d70cd378 }}/dimitris1207/fork_automation_and_devops_project:${{ github.sha }}'
 
