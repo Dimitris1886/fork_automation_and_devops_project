@@ -80,3 +80,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
+          build-args: |
+            API_KEY=${{ secrets.FREE_CURRENCY_API_KEY }}
