@@ -81,8 +81,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/fork_automation_and_devops_project:latest
-          env:
-            FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
+        env:
+          FREE_CURRENCY_API_KEY: ${{ secrets.FREE_CURRENCY_API_KEY }}
 
 
   deploy:
