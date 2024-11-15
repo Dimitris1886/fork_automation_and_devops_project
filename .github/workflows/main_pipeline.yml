@@ -101,7 +101,8 @@ jobs:
           app-name: 'devops-automation'
           slot-name: production
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_489d6d4410c8428d818280f53b8ac26f }}
-          images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0b6181770a4c459794495657d70cd378 }}/dimitris1207/fork_automation_and_devops_project:${{ github.sha }}'
+          images: 'dimitris1207/fork_automation_and_devops_project:latest'
+
 
 
 
